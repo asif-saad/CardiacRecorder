@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".AddActivity"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="30dp"
+        android:background="#DADADA"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/Data"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:gravity="center"
+            android:hint="Data (dd-MM-yyyy)"
+            android:inputType="datetime"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#6A6A6A" />
+
+
+        <EditText
+            android:id="@+id/Time"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:gravity="center"
+            android:hint="Time (HH:mm)"
+            android:inputType="datetime"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#6A6A6A" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/systolic_pressure"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:gravity="center"
+            android:hint="Systolic Pressure (in mm Hg)"
+            android:inputType="number"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColorHint="#6A6A6A" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/diastolic_pressure"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="Diastolic Pressure (in mm Hg)"
+            android:inputType="number"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColorHint="#6A6A6A" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/heart_rate"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="Heart Rate (Beats per minute)"
+            android:inputType="number"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColorHint="#6A6A6A" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/comment"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="Comment"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:textColorHint="#6A6A6A" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,11 +20,13 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton addButton;
     ConstraintLayout constraintLayout;
+    CustomAdapter customAdapter;
 
 
     MyDatabaseHelper myDB;
     ArrayList<Integer> systolic, diastolic, heart;
-    ArrayList<String> comment;
+    ArrayList<String> comment,date,time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.MainRecycler);
         addButton = findViewById(R.id.addButton);
-        constraintLayout=findViewById(R.id.MainPageConstrain);
+        constraintLayout = findViewById(R.id.MainPageConstrain);
+
+
+
+
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -49,8 +56,16 @@ public class MainActivity extends AppCompatActivity {
         diastolic = new ArrayList<Integer>();
         heart = new ArrayList<Integer>();
         comment = new ArrayList<String>();
+        date=new ArrayList<String>();
+        time=new ArrayList<String>();
+
 
         storeData();
+
+
+        customAdapter= new CustomAdapter(MainActivity.this,date,time,systolic,diastolic,heart);
+        recyclerView.setAdapter(customAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
 
 
@@ -62,10 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
 
             while (cursor.moveToNext()) {
-                systolic.add(Integer.valueOf(cursor.getString(0)));
-                diastolic.add(Integer.valueOf(cursor.getString(1)));
-                heart.add(Integer.valueOf(cursor.getString(2)));
-                comment.add(cursor.getString(3));
+
+                date.add(cursor.getString(1));
+                time.add(cursor.getString(2));
+                systolic.add(Integer.valueOf(cursor.getString(3)));
+                diastolic.add(Integer.valueOf(cursor.getString(4)));
+                heart.add(Integer.valueOf(cursor.getString(5)));
+                comment.add(cursor.getString(6));
 
 
             }

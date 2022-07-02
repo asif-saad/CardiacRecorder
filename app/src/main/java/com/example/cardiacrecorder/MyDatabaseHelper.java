@@ -14,21 +14,25 @@ import androidx.annotation.Nullable;
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
-    public static final String DATABASE_NAME="CardiacRecorder.db";
+    public static final String DATABASE_NAME="HealthBee.db";
     public static final int DATABASE_VERSION=1;
 
 
 
     private static final String TABLE_NAME="record";
-    private static final String COLUMN_ID="id";
+    private static final String COLUMN_ID="_id";
     private static final String COLUMN_SYSTOLIC="systolic_pressure";
     private static final String COLUMN_DIASTOLIC="diastolic_pressure";
     private static final String COLUMN_HEART="heart_beat";
     private static final String COLUMN_COMMENT="comment";
+    private static final String COLUMN_DATE="date";
+    private static final String COLUMN_TIME="time";
 
 
     public MyDatabaseHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME,
+                null,
+                DATABASE_VERSION);
         this.context=context;
 
     }
@@ -36,13 +40,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query="CREATE TABLE " + TABLE_NAME + " ("+ COLUMN_ID +
-                " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String query="CREATE TABLE " + TABLE_NAME + " ("+
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_DATE + " TEXT, "+
+                COLUMN_TIME + " TEXT, "+
                 COLUMN_SYSTOLIC + " INTEGER, "+
                 COLUMN_DIASTOLIC + " INTEGER, "+
                 COLUMN_HEART + " INTEGER, "+
                 COLUMN_COMMENT + " TEXT);";
-
         db.execSQL(query);
     }
 
@@ -55,19 +60,20 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void addRecord(int systolic, int diastolic, int heart, String comment)
+    public void addRecord(String date,String time,int systolic, int diastolic, int heart, String comment)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
-
-
+        cv.put(COLUMN_DATE,date);
+        cv.put(COLUMN_TIME,time);
         cv.put(COLUMN_SYSTOLIC,systolic);
         cv.put(COLUMN_DIASTOLIC,diastolic);
         cv.put(COLUMN_HEART,heart);
         cv.put(COLUMN_COMMENT,comment);
 
-        long result=db.insert(TABLE_NAME,null,cv);
 
+
+        long result=db.insert(TABLE_NAME,null,cv);
         if(result==-1)
         {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();

@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:background="#ECFB1E"
     android:id="@+id/MainPageConstrain"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20sp"
         android:id="@+id/MainRecycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -112,10 +112,13 @@ public class AddActivity extends AppCompatActivity {
                             "Added Successfully!!!", Toast.LENGTH_SHORT).show();
 
                     MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
-                    myDB.addRecord(Integer.parseInt(Objects.requireNonNull(systolic.getText()).toString().trim()),
+                    myDB.addRecord(Objects.requireNonNull(date.getText().toString().trim()),
+                            Objects.requireNonNull(time.getText().toString().trim()),
+                            Integer.parseInt(Objects.requireNonNull(systolic.getText()).toString().trim()),
                             Integer.parseInt(Objects.requireNonNull(diastolic.getText()).toString().trim()),
                             Integer.parseInt(Objects.requireNonNull(Objects.requireNonNull(heart_rate).getText()).toString().trim()),
-                            comment.getText().toString().trim());
+                            "HELLO");
+                    //myDB.addRecord("date","time",113,106,89,"end");
                 } else {
                     Toast.makeText(AddActivity.this,
                             "Error Found!\n Check your entries", Toast.LENGTH_SHORT).show();

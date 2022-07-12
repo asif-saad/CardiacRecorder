@@ -48,6 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.systolic_text.setText(String.valueOf(systolic.get(position)));
         holder.diastolic_text.setText(String.valueOf(diastolic.get(position)));
         holder.heart_text.setText(String.valueOf(heart.get(position)));
+        holder.index.setText("Index number");
 
     }
 
@@ -58,10 +59,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView date_text, time_text, systolic_text, diastolic_text, heart_text;
+        TextView date_text, time_text, systolic_text, diastolic_text, heart_text,index;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            index=itemView.findViewById(R.id.IndexCard);
             date_text = itemView.findViewById(R.id.DateCard);
             time_text = itemView.findViewById(R.id.TimeCard);
             systolic_text = itemView.findViewById(R.id.systolicCard);

@@ -20,7 +20,7 @@ public class AddActivity extends AppCompatActivity {
     private TextInputEditText systolic, diastolic, heart_rate, comment;
     private boolean flag = false;
     private EditText date, time;
-    Button add, delete;
+    Button add;
 
 
     @SuppressLint("SimpleDateFormat")
@@ -37,7 +37,6 @@ public class AddActivity extends AppCompatActivity {
         heart_rate = findViewById(R.id.heart_rate);
         comment = findViewById(R.id.comment);
         add = findViewById(R.id.add);
-        delete = findViewById(R.id.delete);
 
 
         date.setEnabled(false);
@@ -123,14 +122,6 @@ public class AddActivity extends AppCompatActivity {
                     Toast.makeText(AddActivity.this,
                             "Error Found!\n Check your entries", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(AddActivity.this, "Hello world", Toast.LENGTH_SHORT).show();
             }
         });
 

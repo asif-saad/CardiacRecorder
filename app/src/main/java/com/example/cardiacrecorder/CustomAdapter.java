@@ -48,12 +48,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
+
         holder.index.setText("# " + String.valueOf(position + 1));
+
         holder.date_text.setText(String.valueOf(date.get(position)));
         holder.time_text.setText(String.valueOf(time.get(position)));
         holder.systolic_text.setText(String.valueOf(systolic.get(position)));
         holder.diastolic_text.setText(String.valueOf(diastolic.get(position)));
         holder.heart_text.setText(String.valueOf(heart.get(position)));
+
         holder.comment.setText(String.valueOf(comment.get(position)));
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +81,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
 
         TextView date_text, time_text, systolic_text, diastolic_text, heart_text, index, comment;
         LinearLayout linearLayout;

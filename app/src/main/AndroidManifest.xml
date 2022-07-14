@@ -14,13 +14,15 @@
         android:theme="@style/Theme.CardiacRecorder"
         tools:targetApi="31">
         <activity
+            android:name=".EditActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddActivity"
             android:exported="false"
             android:label="Add Cardiac Record"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
-
             android:exported="true"
             android:label="Cardiac Recorder">
             <intent-filter>

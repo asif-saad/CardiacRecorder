@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         storeData();
 
 
-        customAdapter= new CustomAdapter(MainActivity.this,date,time,systolic,diastolic,heart);
+        customAdapter= new CustomAdapter(MainActivity.this,date,time,systolic,diastolic,heart,comment);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }

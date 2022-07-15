@@ -1,5 +1,6 @@
 package com.example.cardiacrecorder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ public class EditActivity extends AppCompatActivity {
     EditText Systolic, Diastolic, HeartRate, Comment;
     Button Save;
     private String Date, Time, Comment1;
-    private Integer Systolic1, Diastolic1, HeartRate1;
+    private Integer Systolic1, Diastolic1, HeartRate1,id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +31,35 @@ public class EditActivity extends AppCompatActivity {
 
         GetAndSetIntentData();
 
+
+
+
+
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MyDatabaseHelper MyDb=new MyDatabaseHelper(EditActivity.this);
+                MyDb.updateData(String.valueOf(id),
+                        Date,Time,String.valueOf(Systolic1),
+                        String.valueOf(Diastolic1),
+                        String.valueOf(HeartRate1),
+                        Comment1);
 
             }
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     void GetAndSetIntentData() {
@@ -45,7 +68,8 @@ public class EditActivity extends AppCompatActivity {
                 getIntent().hasExtra("Systolic") &&
                 getIntent().hasExtra("Diastolic") &&
                 getIntent().hasExtra("Heart Rate") &&
-                getIntent().hasExtra("Comment")) {
+                getIntent().hasExtra("Comment") &&
+                getIntent().hasExtra("Id")) {
 
             Date = getIntent().getStringExtra("Date");
             Time = getIntent().getStringExtra("Time");
@@ -54,7 +78,7 @@ public class EditActivity extends AppCompatActivity {
             Diastolic1 = getIntent().getIntExtra("Diastolic", 0);
             HeartRate1 = getIntent().getIntExtra("Heart Rate", 0);
             Comment1 = getIntent().getStringExtra("Comment");
-
+            id=getIntent().getIntExtra("Id",0);
 
             Systolic.setText(String.valueOf(Systolic1));
             Diastolic.setText(String.valueOf(Diastolic1));

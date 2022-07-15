@@ -1,6 +1,7 @@
 package com.example.cardiacrecorder;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,26 +9,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList<String> date, time, comment;
+    private Activity activity;
+    private ArrayList<String> date, time, comment, id;
     private ArrayList<Integer> systolic, diastolic, heart;
 
-    CustomAdapter(Context context,
+    CustomAdapter(Activity activity,
+                  Context context,
+                  ArrayList id,
                   ArrayList date,
                   ArrayList time,
                   ArrayList systolic,
                   ArrayList diastolic,
                   ArrayList heart,
                   ArrayList comment) {
+        this.activity=activity;
         this.context = context;
+        this.id = id;
         this.date = date;
         this.time = time;
         this.systolic = systolic;
@@ -49,6 +57,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        // holder.index.setText("# " + String.valueOf(position + 1));
+        holder.index.setText("#" + id.get(position));
+
+
 
         holder.index.setText("# " + String.valueOf(position + 1));
 
@@ -69,7 +81,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("Diastolic", diastolic.get(holder.getAdapterPosition()));
                 intent.putExtra("Heart Rate", heart.get(holder.getAdapterPosition()));
                 intent.putExtra("Comment", String.valueOf(comment.get(holder.getAdapterPosition())));
-                context.startActivity(intent);
+                intent.putExtra("Id", id.get(holder.getAdapterPosition()));
+                activity.startActivityForResult(intent,1);
             }
         });
 

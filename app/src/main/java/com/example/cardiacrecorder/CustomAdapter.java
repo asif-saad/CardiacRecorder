@@ -56,21 +56,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         // holder.index.setText("# " + String.valueOf(position + 1));
         holder.index.setText("#" + id.get(position));
-=======
-=======
->>>>>>> bb7dbd96d918aa2adf4924c78ac3f957036b2ae2
+
 
 
         holder.index.setText("# " + String.valueOf(position + 1));
 
-<<<<<<< HEAD
->>>>>>> bb7dbd96d918aa2adf4924c78ac3f957036b2ae2
-=======
->>>>>>> bb7dbd96d918aa2adf4924c78ac3f957036b2ae2
         holder.date_text.setText(String.valueOf(date.get(position)));
         holder.time_text.setText(String.valueOf(time.get(position)));
         holder.systolic_text.setText(String.valueOf(systolic.get(position)));

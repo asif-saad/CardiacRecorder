@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     MyDatabaseHelper myDB;
     ArrayList<Integer> systolic, diastolic, heart;
-    ArrayList<String> comment,date,time;
+    ArrayList<String> comment, date, time, id;
 
 
     @Override
@@ -36,10 +37,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.MainRecycler);
         addButton = findViewById(R.id.addButton);
         constraintLayout = findViewById(R.id.MainPageConstrain);
-
-
-
-
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -56,18 +53,26 @@ public class MainActivity extends AppCompatActivity {
         diastolic = new ArrayList<Integer>();
         heart = new ArrayList<Integer>();
         comment = new ArrayList<String>();
-        date=new ArrayList<String>();
-        time=new ArrayList<String>();
+        date = new ArrayList<String>();
+        time = new ArrayList<String>();
+        id = new ArrayList<String>();
 
 
         storeData();
 
 
-        customAdapter= new CustomAdapter(MainActivity.this,date,time,systolic,diastolic,heart,comment);
+        customAdapter = new CustomAdapter(MainActivity.this, this, id, date, time, systolic, diastolic, heart, comment);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            recreate();
+        }
+    }
 
     void storeData() {
         Cursor cursor = myDB.readAllData();
@@ -84,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 diastolic.add(Integer.valueOf(cursor.getString(4)));
                 heart.add(Integer.valueOf(cursor.getString(5)));
                 comment.add(cursor.getString(6));
+                id.add(cursor.getString(0));
 
 
             }

@@ -14,7 +14,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     public static final String DATABASE_NAME = "HealthBee.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
 
     private static final String TABLE_NAME = "record";
@@ -95,12 +95,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     void updateData(String row_id,
                     String date,
                     String time,
-                    String systolic,
-                    String diastolic,
-                    String heart_rate,
+                    Integer systolic,
+                    Integer diastolic,
+                    Integer heart_rate,
                     String comment) {
+
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+
 
         cv.put(COLUMN_DATE, date);
         cv.put(COLUMN_TIME, time);
@@ -108,19 +111,61 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_DIASTOLIC, diastolic);
         cv.put(COLUMN_HEART, heart_rate);
         cv.put(COLUMN_COMMENT, comment);
+        cv.put(COLUMN_ID, row_id);
 
 
 
-        long result=db.update(TABLE_NAME,cv,"_id=?",new String[]{row_id});
-
-        if(result==-1)
+        /*long result1=db.delete(TABLE_NAME,"_id=?",new String[]{row_id});
+        if(result1==-1)
         {
+            Toast.makeText(context, "Failed deletion", Toast.LENGTH_SHORT).show();
+        }
+
+
+        long result = db.insert(TABLE_NAME, null, cv);
+        if (result == -1) {
+            Toast.makeText(context, "Failed insertion", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Success insertion", Toast.LENGTH_SHORT).show();
+        }*/
+
+
+        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
+        Toast.makeText(context, row_id + "/" + String.valueOf(result), Toast.LENGTH_SHORT).show();
+
+
+        if (result == -1) {
             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(context, "Success",Toast.LENGTH_SHORT).show();
-        }
+
+
+
+
+
+
+
+
+
+
+
+        /*SQLiteDatabase db=this.getReadableDatabase();
+        db.execSQL("UPDATE "+ TABLE_NAME+ " SET systolic_pressure = "+"'"+systolic+"',"+
+                                            " diastolic_pressure = "+ "'"+diastolic+"',"+"" +
+                                            " heart_beat = "+ "'"+heart_rate+"' "+
+                "WHERE _id="+row_id);
+
+
+        }*/
     }
 
 
+    void deleteOneRow(String row_id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
+        if (result == -1) {
+            Toast.makeText(context, "Can not be deleted", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
+

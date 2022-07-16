@@ -107,8 +107,8 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (flag) {
-                    Toast.makeText(AddActivity.this,
-                            "Added Successfully!!!", Toast.LENGTH_SHORT).show();
+                    /*Toast.makeText(AddActivity.this,
+                            "Added Successfully!!!", Toast.LENGTH_SHORT).show();*/
 
                     MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
                     myDB.addRecord(Objects.requireNonNull(date.getText().toString().trim()),

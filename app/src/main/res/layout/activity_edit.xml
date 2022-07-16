@@ -71,24 +71,27 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textColorHint="#6A6A6A" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
         <Button
+            android:layout_marginTop="15dp"
             android:id="@+id/SaveEdit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:backgroundTint="#005EFF"
             android:gravity="center"
             android:text="Save" />
+        <Button
+            android:id="@+id/DeleteEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="#FF0027"
+            android:gravity="center"
+            android:text="Delete" />
+
 
     </LinearLayout>
+
 
 
 </LinearLayout>

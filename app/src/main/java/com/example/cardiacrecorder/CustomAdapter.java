@@ -59,18 +59,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         // holder.index.setText("# " + String.valueOf(position + 1));
         holder.index.setText("#" + id.get(position));
-
-
-
-        holder.index.setText("# " + String.valueOf(position + 1));
-
         holder.date_text.setText(String.valueOf(date.get(position)));
         holder.time_text.setText(String.valueOf(time.get(position)));
         holder.systolic_text.setText(String.valueOf(systolic.get(position)));
         holder.diastolic_text.setText(String.valueOf(diastolic.get(position)));
         holder.heart_text.setText(String.valueOf(heart.get(position)));
-
         holder.comment.setText(String.valueOf(comment.get(position)));
+
+
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +77,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("Diastolic", diastolic.get(holder.getAdapterPosition()));
                 intent.putExtra("Heart Rate", heart.get(holder.getAdapterPosition()));
                 intent.putExtra("Comment", String.valueOf(comment.get(holder.getAdapterPosition())));
-                intent.putExtra("Id", id.get(holder.getAdapterPosition()));
+                intent.putExtra("Id", String.valueOf(id.get(holder.getAdapterPosition())).trim());
+                //Toast.makeText(context, String.valueOf(id.get(holder.getAdapterPosition())), Toast.LENGTH_SHORT).show();
                 activity.startActivityForResult(intent,1);
             }
         });

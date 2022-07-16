@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,7 +60,10 @@ public class MainActivity extends AppCompatActivity {
         storeData();
 
 
-        customAdapter = new CustomAdapter(MainActivity.this, this, id, date, time, systolic, diastolic, heart, comment);
+        customAdapter = new CustomAdapter(MainActivity.this, this,
+                id, date, time, systolic, diastolic, heart, comment);
+
+
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     void storeData() {
         Cursor cursor = myDB.readAllData();
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
         } else {
 
 

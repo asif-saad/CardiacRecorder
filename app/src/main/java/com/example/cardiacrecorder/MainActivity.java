@@ -9,8 +9,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,11 +25,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    FloatingActionButton addButton;
+    FloatingActionButton addButton,sortButton;
     ConstraintLayout constraintLayout;
     CustomAdapter customAdapter;
     ImageView emptyImage;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     MyDatabaseHelper myDB;
     ArrayList<Integer> systolic, diastolic, heart;
     ArrayList<String> comment, date, time, id;
+    ArrayList<Record> records;
 
 
     @Override
@@ -51,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         emptyText=findViewById(R.id.no_data);
 
 
+
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
         myDB = new MyDatabaseHelper(MainActivity.this);
@@ -68,15 +76,13 @@ public class MainActivity extends AppCompatActivity {
         date = new ArrayList<String>();
         time = new ArrayList<String>();
         id = new ArrayList<String>();
+        records= new ArrayList<Record>();
 
 
 
 
         storeData();
-        customAdapter = new CustomAdapter(MainActivity.this, this,
-                id, date, time, systolic, diastolic, heart, comment);
-        recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
     }
 
 
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     void storeData() {
         Cursor cursor = myDB.readAllData();
         if (cursor.getCount() == 0) {
-            //Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
             emptyImage.setVisibility(View.VISIBLE);
             emptyImage.setVisibility(View.VISIBLE);
         } else {
@@ -120,13 +126,45 @@ public class MainActivity extends AppCompatActivity {
                 heart.add(Integer.valueOf(cursor.getString(5)));
                 comment.add(cursor.getString(6));
                 id.add(cursor.getString(0));
-
-
+                records.add(new Record(Integer.valueOf(cursor.getString(3)),
+                        Integer.valueOf(cursor.getString(4)),
+                        Integer.valueOf(cursor.getString(5)),
+                        cursor.getString(6),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(0)));
             }
+
+
+
             emptyImage.setVisibility(View.GONE);
             emptyText.setVisibility(View.GONE);
+
+            Collections.sort(records, new Comparator<Record>() {
+                @Override
+                public int compare(Record record, Record t1) {
+                    return t1.id.compareToIgnoreCase(record.id);
+                }
+            });
         }
+
+        customAdapter = new CustomAdapter(MainActivity.this, this,
+                id, date, time, systolic, diastolic, heart, comment);
+        recyclerView.setAdapter(customAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();

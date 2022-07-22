@@ -1,6 +1,7 @@
 package com.example.cardiacrecorder;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -118,6 +119,9 @@ public class AddActivity extends AppCompatActivity {
                             Integer.parseInt(Objects.requireNonNull(Objects.requireNonNull(heart_rate).getText()).toString().trim()),
                             "HELLO");
                     //myDB.addRecord("date","time",113,106,89,"end");
+                    Intent intent=new Intent(AddActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(AddActivity.this,
                             "Error Found!\n Check your entries", Toast.LENGTH_SHORT).show();

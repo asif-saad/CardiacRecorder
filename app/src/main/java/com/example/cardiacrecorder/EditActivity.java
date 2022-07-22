@@ -1,12 +1,17 @@
 package com.example.cardiacrecorder;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,8 +21,8 @@ public class EditActivity extends AppCompatActivity {
 
     EditText Systolic, Diastolic, HeartRate, Comment;
     Button Save, Delete;
-    private String Date, Time, Comment1, id;
-    private Integer Systolic1, Diastolic1, HeartRate1;
+    private String Date, Time, Comment1, Comment2;
+    private Integer Systolic1, Diastolic1, HeartRate1,id, Systolic2, Diastolic2, HeartRate2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +53,28 @@ public class EditActivity extends AppCompatActivity {
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Systolic2=Integer.parseInt(String.valueOf(Systolic.getText()));
+                Diastolic2=Integer.parseInt(String.valueOf(Diastolic.getText()));
+                HeartRate2=Integer.parseInt(String.valueOf(HeartRate.getText()));
+                Comment2=String.valueOf(Comment.getText());
+
                 MyDatabaseHelper MyDb = new MyDatabaseHelper(EditActivity.this);
                 MyDb.updateData(id,
                         Date,
                         Time,
-                        Systolic1,
-                        Diastolic1,
-                        HeartRate1,
-                        Comment1);
+                        Systolic2,
+                        Diastolic2,
+                        HeartRate2,
+                        Comment2);
+
+                Intent intent=new Intent(EditActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });
+
+
 
         Delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +100,7 @@ public class EditActivity extends AppCompatActivity {
             Diastolic1 = getIntent().getIntExtra("Diastolic", 0);
             HeartRate1 = getIntent().getIntExtra("Heart Rate", 0);
             Comment1 = getIntent().getStringExtra("Comment");
-            id = getIntent().getStringExtra("Id");
+            id=Integer.parseInt(getIntent().getStringExtra("Id"));
             //Toast.makeText(this, getIntent().getStringExtra("Id"), Toast.LENGTH_SHORT).show();
 
 
@@ -109,7 +125,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 MyDatabaseHelper MyDb = new MyDatabaseHelper(EditActivity.this);
-                MyDb.deleteOneRow(id);
+                MyDb.deleteOneRow(String.valueOf(id));
                 finish();
             }
         });
@@ -122,4 +138,5 @@ public class EditActivity extends AppCompatActivity {
 
         builder.create().show();
     }
+
 }

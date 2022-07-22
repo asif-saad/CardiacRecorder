@@ -1,11 +1,20 @@
 package com.example.cardiacrecorder;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton addButton;
     ConstraintLayout constraintLayout;
     CustomAdapter customAdapter;
+    ImageView emptyImage;
+    TextView emptyText;
 
 
     MyDatabaseHelper myDB;
@@ -36,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.MainRecycler);
         addButton = findViewById(R.id.addButton);
         constraintLayout = findViewById(R.id.MainPageConstrain);
+        emptyImage=findViewById(R.id.empty_imageview);
+        emptyText=findViewById(R.id.no_data);
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -57,16 +70,21 @@ public class MainActivity extends AppCompatActivity {
         id = new ArrayList<String>();
 
 
+
+
         storeData();
-
-
         customAdapter = new CustomAdapter(MainActivity.this, this,
                 id, date, time, systolic, diastolic, heart, comment);
-
-
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
+
+
+
+
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -76,10 +94,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+
+
+
+
+
+
     void storeData() {
         Cursor cursor = myDB.readAllData();
         if (cursor.getCount() == 0) {
             //Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show();
+            emptyImage.setVisibility(View.VISIBLE);
+            emptyImage.setVisibility(View.VISIBLE);
         } else {
 
 
@@ -95,6 +123,53 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
+            emptyImage.setVisibility(View.GONE);
+            emptyText.setVisibility(View.GONE);
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.my_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.delete_all)
+        {
+            ConfirmDialog();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void ConfirmDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Would you like to delete all entry?");
+        builder.setMessage("Are you sure you want to delete?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                MyDatabaseHelper myDB=new MyDatabaseHelper(MainActivity.this);
+                myDB.deleteAllData();
+                Intent intent=new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.create().show();
+    }
+
+
 }

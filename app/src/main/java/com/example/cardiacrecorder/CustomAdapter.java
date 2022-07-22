@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private Activity activity;
     private ArrayList<String> date, time, comment, id;
     private ArrayList<Integer> systolic, diastolic, heart;
+    Animation translate_anim;
 
     CustomAdapter(Activity activity,
                   Context context,
@@ -45,6 +48,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
 
+
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,6 +57,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         View view = layoutInflater.inflate(R.layout.my_row, parent, false);
         return new MyViewHolder(view);
     }
+
+
+
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -77,7 +86,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("Diastolic", diastolic.get(holder.getAdapterPosition()));
                 intent.putExtra("Heart Rate", heart.get(holder.getAdapterPosition()));
                 intent.putExtra("Comment", String.valueOf(comment.get(holder.getAdapterPosition())));
-                intent.putExtra("Id", String.valueOf(id.get(holder.getAdapterPosition())).trim());
+                intent.putExtra("Id",String.valueOf(id.get(holder.getAdapterPosition())));
                 //Toast.makeText(context, String.valueOf(id.get(holder.getAdapterPosition())), Toast.LENGTH_SHORT).show();
                 activity.startActivityForResult(intent,1);
             }
@@ -85,14 +94,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     }
 
+
+
+
+
     @Override
     public int getItemCount() {
         return date.size();
     }
-
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
-
         TextView date_text, time_text, systolic_text, diastolic_text, heart_text, index, comment;
         LinearLayout linearLayout;
 
@@ -106,6 +116,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             heart_text = itemView.findViewById(R.id.heartCard);
             linearLayout = itemView.findViewById(R.id.LinearLayoutRow);
             comment = itemView.findViewById(R.id.CommentMyRow);
+            translate_anim= AnimationUtils.loadAnimation(itemView.getContext(), R.anim.translate_anim);
+            linearLayout.setAnimation(translate_anim);
         }
     }
 }

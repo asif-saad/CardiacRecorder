@@ -14,7 +14,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     public static final String DATABASE_NAME = "HealthBee.db";
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
 
 
     private static final String TABLE_NAME = "record";
@@ -92,7 +92,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    void updateData(String row_id,
+
+
+
+
+
+
+
+    void updateData(Integer row_id,
                     String date,
                     String time,
                     Integer systolic,
@@ -111,27 +118,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_DIASTOLIC, diastolic);
         cv.put(COLUMN_HEART, heart_rate);
         cv.put(COLUMN_COMMENT, comment);
-        cv.put(COLUMN_ID, row_id);
+        //cv.put(COLUMN_ID, row_id);
 
 
 
-        /*long result1=db.delete(TABLE_NAME,"_id=?",new String[]{row_id});
-        if(result1==-1)
-        {
-            Toast.makeText(context, "Failed deletion", Toast.LENGTH_SHORT).show();
-        }
 
-
-        long result = db.insert(TABLE_NAME, null, cv);
-        if (result == -1) {
-            Toast.makeText(context, "Failed insertion", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Success insertion", Toast.LENGTH_SHORT).show();
-        }*/
-
-
-        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
-        Toast.makeText(context, row_id + "/" + String.valueOf(result), Toast.LENGTH_SHORT).show();
+        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{String.valueOf(row_id)});
+        Toast.makeText(context, row_id + "/" + result, Toast.LENGTH_SHORT).show();
 
 
         if (result == -1) {
@@ -139,23 +132,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
 
 
+        /*SQLiteDatabase db1 = this.getReadableDatabase();
+        db1.execSQL("UPDATE " + TABLE_NAME + " SET systolic_pressure = " + systolic + "," +
+                " diastolic_pressure = " + diastolic + "," +
+                " heart_beat = " + heart_rate +
+                " WHERE _id=" + row_id + ";");*/
 
 
-
-
-
-
-
-
-
-        /*SQLiteDatabase db=this.getReadableDatabase();
-        db.execSQL("UPDATE "+ TABLE_NAME+ " SET systolic_pressure = "+"'"+systolic+"',"+
-                                            " diastolic_pressure = "+ "'"+diastolic+"',"+"" +
-                                            " heart_beat = "+ "'"+heart_rate+"' "+
-                "WHERE _id="+row_id);
-
-
-        }*/
     }
 
 
@@ -166,6 +149,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         if (result == -1) {
             Toast.makeText(context, "Can not be deleted", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+
+
+    void deleteAllData()
+    {
+        SQLiteDatabase db= this.getWritableDatabase();
+        db.execSQL("DELETE FROM "+ TABLE_NAME);
     }
 }
 

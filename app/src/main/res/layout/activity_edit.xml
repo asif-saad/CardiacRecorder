@@ -17,43 +17,9 @@
         android:orientation="vertical"
         tools:ignore="RtlSymmetry">
 
-        <EditText
-            android:id="@+id/Data"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:clickable="false"
-            android:hint="Data (dd-MM-yyyy)"
-            android:inputType="datetime"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="10dp"
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="20dp"
-            android:textColor="#000000"
-            android:textColorHint="#6A6A6A" />
-
-
-        <EditText
-            android:id="@+id/Time"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:hint="Time (HH:mm)"
-            android:inputType="datetime"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="10dp"
-            android:paddingStart="20dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="20dp"
-            android:textColor="#000000"
-            android:textColorHint="#6A6A6A" />
-
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/systolic_pressure"
+            android:id="@+id/SystolicPressureEdit"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,11 +34,10 @@
             android:textColorHint="#6A6A6A" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/diastolic_pressure"
+            android:id="@+id/DiastolicPressureEdit"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:hint="Diastolic Pressure (in mm Hg)"
             android:inputType="number"
             android:paddingHorizontal="20dp"
@@ -82,7 +47,7 @@
             android:textColorHint="#6A6A6A" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/heart_rate"
+            android:id="@+id/HeartRateEdit"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +60,7 @@
             android:textColorHint="#6A6A6A" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/comment"
+            android:id="@+id/CommentEdit"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,35 +71,27 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:textColorHint="#6A6A6A" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:outlineSpotShadowColor="#D31414"
-        android:layout_height="wrap_content">
-
         <Button
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="15dp"
+            android:id="@+id/SaveEdit"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            
             android:layout_marginEnd="5dp"
-            android:backgroundTint="#01D11E"
+            android:backgroundTint="#005EFF"
             android:gravity="center"
-            android:text="Add" />
-
+            android:text="Save" />
         <Button
-            android:id="@+id/delete"
-            android:layout_width="wrap_content"
+            android:id="@+id/DeleteEdit"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            
-            android:backgroundTint="#D30202"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="#FF0027"
+            android:gravity="center"
             android:text="Delete" />
 
+
     </LinearLayout>
+
 
 
 </LinearLayout>

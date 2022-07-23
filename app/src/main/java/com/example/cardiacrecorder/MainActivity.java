@@ -126,13 +126,13 @@ public class MainActivity extends AppCompatActivity {
                 heart.add(Integer.valueOf(cursor.getString(5)));
                 comment.add(cursor.getString(6));
                 id.add(cursor.getString(0));
-                records.add(new Record(Integer.valueOf(cursor.getString(3)),
+                /*records.add(new Record(Integer.valueOf(cursor.getString(3)),
                         Integer.valueOf(cursor.getString(4)),
                         Integer.valueOf(cursor.getString(5)),
                         cursor.getString(6),
                         cursor.getString(1),
                         cursor.getString(2),
-                        cursor.getString(0)));
+                        cursor.getString(0)));*/
             }
 
 

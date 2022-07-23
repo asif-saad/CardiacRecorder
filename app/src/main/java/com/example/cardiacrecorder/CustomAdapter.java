@@ -75,19 +75,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.heart_text.setText(String.valueOf(heart.get(position)));
         holder.comment.setText(String.valueOf(comment.get(position)));
 
-<<<<<<< HEAD
+
         if((systolic.get(position)<90 || systolic.get(position)>140) || (diastolic.get(position)<60 || diastolic.get(position)>90))
         {
             holder.imageView.setImageResource(R.drawable.error);
         }
-=======
-        /*if(systolic.get(position)<90 && systolic.get(position)>140 &&
-                diastolic.get(position)<60 && diastolic.get(position)>90)
-        {
-            holder.image.setImageResource(R.drawable.error);
-        }*/
-
->>>>>>> saad
 
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -118,20 +110,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView date_text, time_text, systolic_text, diastolic_text, heart_text, index, comment;
-<<<<<<< HEAD
+
         ImageView imageView;
-=======
-        ImageView image;
->>>>>>> saad
+
         LinearLayout linearLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-<<<<<<< HEAD
+
             imageView=itemView.findViewById(R.id.ImageView);
-=======
-            image=itemView.findViewById(R.id.ImageView);
->>>>>>> saad
+
             index = itemView.findViewById(R.id.IndexCard);
             date_text = itemView.findViewById(R.id.DateCard);
             time_text = itemView.findViewById(R.id.TimeCard);

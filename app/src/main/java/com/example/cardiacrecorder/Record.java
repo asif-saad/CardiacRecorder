@@ -3,14 +3,14 @@ package com.example.cardiacrecorder;
 public class Record implements Comparable<Record> {
 
     Integer systolic,diastolic,heart;
-    String comment, data, time;
+    String comment, date, time;
 
-    public Record(Integer systolic, Integer diastolic, Integer heart, String comment, String data, String time) {
+    public Record(Integer systolic, Integer diastolic, Integer heart, String comment, String date, String time) {
         this.systolic = systolic;
         this.diastolic = diastolic;
         this.heart = heart;
         this.comment = comment;
-        this.data = data;
+        this.date = date;
         this.time = time;
     }
 
@@ -46,12 +46,13 @@ public class Record implements Comparable<Record> {
         this.comment = comment;
     }
 
-    public String getData() {
-        return data;
+
+    public String getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTime() {

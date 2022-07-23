@@ -117,7 +117,7 @@ public class AddActivity extends AppCompatActivity {
                             Integer.parseInt(Objects.requireNonNull(systolic.getText()).toString().trim()),
                             Integer.parseInt(Objects.requireNonNull(diastolic.getText()).toString().trim()),
                             Integer.parseInt(Objects.requireNonNull(Objects.requireNonNull(heart_rate).getText()).toString().trim()),
-                            "HELLO");
+                            comment.getText().toString().trim());
                     //myDB.addRecord("date","time",113,106,89,"end");
                     Intent intent=new Intent(AddActivity.this, MainActivity.class);
                     startActivity(intent);

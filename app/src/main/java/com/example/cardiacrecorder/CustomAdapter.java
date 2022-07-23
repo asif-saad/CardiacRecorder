@@ -4,11 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("ALL")
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
@@ -67,13 +69,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         // holder.index.setText("# " + String.valueOf(position + 1));
-        holder.index.setText("#" + id.get(position));
         holder.date_text.setText(String.valueOf(date.get(position)));
         holder.time_text.setText(String.valueOf(time.get(position)));
         holder.systolic_text.setText(String.valueOf(systolic.get(position)));
         holder.diastolic_text.setText(String.valueOf(diastolic.get(position)));
         holder.heart_text.setText(String.valueOf(heart.get(position)));
         holder.comment.setText(String.valueOf(comment.get(position)));
+
+
+        if(systolic.get(position)<90 || systolic.get(position)>140 || diastolic.get(position)<60 || diastolic.get(position)>90)
+        {
+            holder.imageView.setImageResource(R.drawable.error);
+        }
 
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -105,10 +112,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView date_text, time_text, systolic_text, diastolic_text, heart_text, index, comment;
         LinearLayout linearLayout;
+        ImageView imageView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            index = itemView.findViewById(R.id.IndexCard);
+            //index = itemView.findViewById(R.id.IndexCard);
+            imageView=itemView.findViewById(R.id.imageView);
             date_text = itemView.findViewById(R.id.DateCard);
             time_text = itemView.findViewById(R.id.TimeCard);
             systolic_text = itemView.findViewById(R.id.systolicCard);

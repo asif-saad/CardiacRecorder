@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-@SuppressWarnings("ALL")
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
@@ -75,6 +75,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.heart_text.setText(String.valueOf(heart.get(position)));
         holder.comment.setText(String.valueOf(comment.get(position)));
 
+        /*if(systolic.get(position)<90 && systolic.get(position)>140 &&
+                diastolic.get(position)<60 && diastolic.get(position)>90)
+        {
+            holder.image.setImageResource(R.drawable.error);
+        }*/
+
+
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,10 +111,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView date_text, time_text, systolic_text, diastolic_text, heart_text, index, comment;
+        ImageView image;
         LinearLayout linearLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            image=itemView.findViewById(R.id.ImageView);
             index = itemView.findViewById(R.id.IndexCard);
             date_text = itemView.findViewById(R.id.DateCard);
             time_text = itemView.findViewById(R.id.TimeCard);

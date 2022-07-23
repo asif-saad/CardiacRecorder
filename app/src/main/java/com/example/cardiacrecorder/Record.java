@@ -2,6 +2,7 @@ package com.example.cardiacrecorder;
 
 public class Record implements Comparable<Record> {
 
+
     Integer systolic,diastolic,heart;
     String comment, date, time;
 
@@ -46,7 +47,6 @@ public class Record implements Comparable<Record> {
         this.comment = comment;
     }
 
-
     public String getDate() {
         return date;
     }
@@ -63,8 +63,10 @@ public class Record implements Comparable<Record> {
         this.time = time;
     }
 
+
     @Override
     public int compareTo(Record record) {
         return this.systolic.compareTo(record.getSystolic());
     }
+
 }

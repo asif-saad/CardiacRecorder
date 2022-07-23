@@ -46,7 +46,7 @@
                         android:textSize="30sp" />
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/ImageView"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:src="@drawable/green_tick" />

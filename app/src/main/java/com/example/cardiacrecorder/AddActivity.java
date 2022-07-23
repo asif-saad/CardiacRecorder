@@ -51,6 +51,7 @@ public class AddActivity extends AppCompatActivity {
 
         dateFormat = new SimpleDateFormat("HH:mm aaa");
         String time1 = dateFormat.format(calendar.getTime());
+
         time.setText(time1);
 
 
@@ -58,7 +59,7 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int a = Integer.parseInt(Objects.requireNonNull(systolic.getText()).toString());
-                if (a < 60 || a > 240) {
+                if (a < 0) {
                     systolic.getText().clear();
                     Toast.makeText(AddActivity.this,
                             "Invalid value for Systolic Pressure!", Toast.LENGTH_SHORT).show();
@@ -75,7 +76,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int a = Integer.parseInt(Objects.requireNonNull(diastolic.getText()).toString());
 
-                if (a < 30 || a > 150) {
+                if (a < 0) {
                     diastolic.getText().clear();
                     Toast.makeText(AddActivity.this,
                             "Invalid value for Diastolic Pressure!", Toast.LENGTH_SHORT).show();
@@ -93,7 +94,7 @@ public class AddActivity extends AppCompatActivity {
                 int a = Integer.parseInt(Objects.requireNonNull(heart_rate.getText()).toString());
 
 
-                if (a > 220 || a < 35) {
+                if (a < 0) {
                     flag = false;
                     heart_rate.getText().clear();
                     Toast.makeText(AddActivity.this, "Invalid value for Heart rate", Toast.LENGTH_SHORT).show();

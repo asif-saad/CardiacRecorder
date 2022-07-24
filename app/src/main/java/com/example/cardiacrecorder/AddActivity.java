@@ -23,7 +23,10 @@ public class AddActivity extends AppCompatActivity {
     private EditText date, time;
     Button add;
 
-
+    /**
+     * This function get executed in the creation of add activity intent
+     * @param savedInstanceState
+     */
     @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,10 @@ public class AddActivity extends AppCompatActivity {
         time.setText(time1);
 
 
+        /**
+         * This function takes input from systolic textfield and assigns the value to a variable
+         * If the user inserts a invalid value, it assigns a flag
+         */
         systolic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +76,10 @@ public class AddActivity extends AppCompatActivity {
             }
         });
 
-
+        /**
+         * This function takes input from diastolic textfield and assigns the value to a variable
+         * If the user inserts a invalid value, it assigns a flag
+         */
         diastolic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,13 +96,14 @@ public class AddActivity extends AppCompatActivity {
             }
         });
 
-
+        /**
+         * This function takes input from heart_rate textfield and assigns the value to a variable
+         * If the user inserts a invalid value, it assigns a flag
+         */
         heart_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int a = Integer.parseInt(Objects.requireNonNull(heart_rate.getText()).toString());
-
-
                 if (a > 220 || a < 35) {
                     flag = false;
                     heart_rate.getText().clear();
@@ -103,7 +114,12 @@ public class AddActivity extends AppCompatActivity {
             }
         });
 
-
+        /**
+         * Clicking this button confirms the entries of the user and stores the collected data to the database
+         * It also shuts down AddActivity intent and navigate the user back to MainActivity where the list of data is displayed
+         * If any flag is assigned 'true' due to wrong type of user input, the data is rejected and a toast is displayed
+         * showing the error and the textfields are cleared
+         */
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

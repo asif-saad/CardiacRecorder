@@ -124,7 +124,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{String.valueOf(row_id)});
-        Toast.makeText(context, row_id + "/" + result, Toast.LENGTH_SHORT).show();
+
 
 
         if (result == -1) {

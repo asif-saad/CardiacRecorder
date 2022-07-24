@@ -36,18 +36,9 @@
                     tools:ignore="MissingConstraints">
 
 
-                    <TextView
-                        android:id="@+id/IndexCard"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textSize="30sp"
-                        android:visibility="invisible"
-                         />
 
                     <ImageView
-                        android:id="@+id/ImageView"
+                        android:id="@+id/imageView"
                         android:layout_width="match_parent"
                         android:layout_height="30sp"
                         android:src="@drawable/green_tick" />
@@ -94,7 +85,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:paddingEnd="15dp"
-                        android:text="Systolic"
+                        android:text="systolic"
                         android:textColor="#000000"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
@@ -119,7 +110,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:paddingEnd="15dp"
-                        android:text="Diastolic"
+                        android:text="diastolic"
                         android:textColor="#000000"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
@@ -144,7 +135,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:paddingEnd="15dp"
-                        android:text="Heart beat"
+                        android:text="heart beat"
                         android:textColor="#000000"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
@@ -162,8 +153,7 @@
                     android:id="@+id/CommentMyRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+
                     android:textColor="#000000" />
 
             </LinearLayout>

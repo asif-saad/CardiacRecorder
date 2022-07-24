@@ -38,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> systolic, diastolic, heart;
     ArrayList<String> comment, date, time, id;
 
-
+    /**
+     * this function initiates the instances of different components of main activity page
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
         emptyImage=findViewById(R.id.empty_imageview);
         emptyText=findViewById(R.id.no_data);
 
-
+        /**
+         * this function works as an event handler for the add button to initiate the AddActivity intent.
+         * Clicking this button will navigate the user to Add Activity page
+         */
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

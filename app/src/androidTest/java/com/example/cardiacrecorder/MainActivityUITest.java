@@ -40,8 +40,9 @@ public class MainActivityUITest {
         onView(withId(R.id.comment)).perform(ViewActions.typeText("Dr. Amir tested."));
         Espresso.pressBack();
         onView(withId(R.id.add)).perform(click());
-        //onView(withId(R.id.systolicCard)).check(matches((withText("120"))))
+        /*onData(anything()).inAdapterView(withId(R.id.MainRecycler)).atPosition(0)
+                .onChildView(withId(R.id.lin_lay)).onChildView(withId(R.id.systolicCard))
+                .check(matches((withText("120"))));*/
 
-        //onData(anything()).inAdapterView(withId(R.id.MainRecycler)).atPosition(0).perform(click());
     }
 }

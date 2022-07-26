@@ -46,10 +46,14 @@ public class EditActivity extends AppCompatActivity {
         if (ab != null) {
             ab.setTitle("Edit Menu");
         }
-
-
         //Toast.makeText(EditActivity.this, id, Toast.LENGTH_SHORT).show();
 
+
+        /**
+         * Clicking this button will store the edited data in the database
+         * The EditActivity intent is also closed
+         * It navigates the user back to MainActivity Page where the data is displayed
+         */
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +79,10 @@ public class EditActivity extends AppCompatActivity {
         });
 
 
-
+        /**
+         * This button lets the user delete the entire data of the corresponding record
+         * It opens up a confirm dialog box
+         */
         Delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,7 +123,10 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * This dialog box opens up when the user press 'Delete' button
+     * If the user wants to delete the data, he can confirm here and the corresponding record in database will be deleted.
+     */
     void ConfirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Would you like to delete this entry?");

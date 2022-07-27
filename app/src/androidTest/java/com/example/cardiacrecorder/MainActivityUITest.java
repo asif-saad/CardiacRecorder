@@ -37,7 +37,7 @@ public class MainActivityUITest {
 
 
     /**
-     * This test method adds a new entry in the databse and then checks whether it is displayed or not.
+     * This test method adds a new entry in the database and then checks whether it is displayed or not.
      * Then it clicks on the entry and edits the data and checks again to see if it is displayed or not.
      * Then it clicks on the data again and deletes it and checks if it is deleted or not.
      */

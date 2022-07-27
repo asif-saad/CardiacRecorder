@@ -146,6 +146,11 @@ public class MainActivity extends AppCompatActivity {
         {
             ConfirmDialog();
         }
+        if(item.getItemId()==R.id.AboutUs)
+        {
+            Intent intent=new Intent(MainActivity.this,AboutApp.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 

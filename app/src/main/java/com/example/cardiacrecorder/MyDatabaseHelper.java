@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+/**
+ * Creating a new database in SQLite.
+ * Creating a new table and its attributes are added.
+ */
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -35,6 +39,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * The required SQL query for creating a table in SQLite.
+     * @param db --> takes the created database as parameter.
+     */
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -49,6 +57,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    /**
+     * Required SQL query for recreating table.
+     * @param db --> previously created database where the table is.
+     * @param i
+     * @param i1
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -57,6 +71,11 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * This function adds a new record to database.
+     * @param date, time, systolic, diastolic, heart, comment --> these are user input data.
+     *
+     */
 
     public void addRecord(String date, String time, int systolic, int diastolic, int heart, String comment) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -78,6 +97,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * To read and retrieve data from database to app, this function does the required work.
+     * @return cursor --> this cursor points to the retrieved data.
+     */
     @SuppressLint("Recycle")
     Cursor readAllData() {
         String query = "SELECT * FROM " + TABLE_NAME;

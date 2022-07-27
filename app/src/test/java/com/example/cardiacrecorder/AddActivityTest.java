@@ -30,7 +30,7 @@ public class AddActivityTest {
     }
 
     /**
-     * checks if a record is added successfully on RecordList
+     * Checks if a record is added successfully on RecordList.
      */
     @Test
     public void testAdd() {
@@ -45,7 +45,7 @@ public class AddActivityTest {
     }
 
     /**
-     * checks if add function handle exception successfully
+     * Checks if add function handle exception successfully.
      */
     @Test
     public void testAddException() {

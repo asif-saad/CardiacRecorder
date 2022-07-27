@@ -7,7 +7,7 @@ public class RecordList {
     private List<Record> records = new ArrayList<>();
 
     /**
-     * add a record to records (a recordlist)
+     * Add a record to records (a recordlist)
      * @param record datatype is Record type
      */
     public void add(Record record) {
@@ -18,7 +18,7 @@ public class RecordList {
     }
 
     /**
-     * this will return a List of records (a recordlist)
+     * This will return a List of records (a recordlist).
      * @return
      * List<Record>
      */
@@ -28,9 +28,9 @@ public class RecordList {
     }
 
     /**
-     * delete a particular record from table if data is
-     * exist on that particular table or else if not then
-     * throw an exception
+     * Delete a particular record from table if data is.
+     * Exist on that particular table or else if not then.
+     * Throw an exception.
      * @param record Record type
      */
     public void delete(Record record) {
@@ -43,7 +43,7 @@ public class RecordList {
     }
 
     /**
-     * update a particular record with new value
+     * Update a particular record with new value.
      * @param record_old
      * @param record_new
      */

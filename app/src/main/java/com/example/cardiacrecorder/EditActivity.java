@@ -24,6 +24,11 @@ public class EditActivity extends AppCompatActivity {
     private String Date, Time, Comment1, Comment2;
     private Integer Systolic1, Diastolic1, HeartRate1,id, Systolic2, Diastolic2, HeartRate2;
 
+    /**
+     * This function get executed in the creation of add activity intent.
+     * It initiates the instances of different components of edit activity page.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +85,8 @@ public class EditActivity extends AppCompatActivity {
 
 
         /**
-         * This button lets the user delete the entire data of the corresponding record
-         * It opens up a confirm dialog box
+         * This button lets the user delete the entire data of the corresponding record.
+         * It opens up a confirm dialog box.
          */
         Delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +96,10 @@ public class EditActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * When an edit activity intent is opened, this function finds out the previously stored data for that record and shows them on the corresponding textboxes.
+     * It also opens a toast to confirm the success.
+     */
     void GetAndSetIntentData() {
         if (getIntent().hasExtra("Date") &&
                 getIntent().hasExtra("Time") &&
@@ -115,7 +123,7 @@ public class EditActivity extends AppCompatActivity {
             Diastolic.setText(String.valueOf(Diastolic1));
             HeartRate.setText(String.valueOf(HeartRate1));
             Comment.setText(Comment1);
-            Toast.makeText(this, "Found data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Here's the details !", Toast.LENGTH_SHORT).show();
 
 
         } else {
@@ -124,7 +132,7 @@ public class EditActivity extends AppCompatActivity {
     }
 
     /**
-     * This dialog box opens up when the user press 'Delete' button
+     * This dialog box opens up when the user press 'Delete' button.
      * If the user wants to delete the data, he can confirm here and the corresponding record in database will be deleted.
      */
     void ConfirmDialog() {

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> comment, date, time, id;
 
     /**
-     * this function initiates the instances of different components of main activity page
+     * This function initiates the instances of different components of main activity page
      * @param savedInstanceState
      */
     @Override
@@ -101,13 +101,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
+    /**
+     * This function stores the newly added data to the database.
+     * If no data is found by cursor, it will show an image indicating there's no data i.e. empty
+     */
     void storeData() {
         Cursor cursor = myDB.readAllData();
         if (cursor.getCount() == 0) {
@@ -152,7 +149,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * When the user wants to delete all data and presses delete all button, this confirm dialog box will appear to ask the user if he is sure or not.
+     * If user presses 'yes', it will delete all data.
+     */
     private void ConfirmDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Would you like to delete all entry?");

@@ -36,6 +36,13 @@
                     tools:ignore="MissingConstraints">
 
 
+                    <TextView
+                        android:id="@+id/empty_top"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:textColor="#000000" />
 
                     <ImageView
                         android:id="@+id/imageView"
@@ -44,19 +51,22 @@
                         android:src="@drawable/green_tick" />
 
 
+
                     <TextView
                         android:id="@+id/DateCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-
+                        android:layout_marginTop="15dp"
                         android:textColor="#000000" />
+
 
                     <TextView
                         android:id="@+id/TimeCard"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        android:layout_marginTop="15dp"
                         android:gravity="center"
 
                         android:textColor="#000000" />
@@ -86,7 +96,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:paddingEnd="15dp"
-                        android:text="systolic"
+                        android:text="Systolic"
                         android:textColor="#000000"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
@@ -111,7 +121,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:paddingEnd="15dp"
-                        android:text="diastolic"
+                        android:text="Diastolic"
                         android:textColor="#000000"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
@@ -136,7 +146,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:paddingEnd="15dp"
-                        android:text="heart beat"
+                        android:text="Heart beat"
                         android:textColor="#000000"
                         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
@@ -149,11 +159,19 @@
                         android:textColor="#000000" />
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/empty_comment_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/CommentMyRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
 
                     android:textColor="#000000" />
 

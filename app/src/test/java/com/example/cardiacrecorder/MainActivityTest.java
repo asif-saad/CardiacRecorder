@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MainActivityTest {
 
     /**
-     * create a Mock RecordList with one Record data
+     * Creates a Mock RecordList with one Record data.
      * @return
      * returns a RecordList
      */
@@ -18,9 +18,9 @@ public class MainActivityTest {
     }
 
     /**
-     * create a Mock Record
+     * Creates a Mock Record.
      * @return
-     * returns created Mock Record
+     * returns created Mock Record.
      */
     private Record mockRecord() {
         return new Record(88,78,101,"11-07-2022","14:01 am","no comment");
@@ -30,7 +30,7 @@ public class MainActivityTest {
 
 
     /**
-     * checks if countRecords function can count records on RecordList successfully
+     * Checks if countRecords function can count records on RecordList successfully.
      */
     @Test
     public void testcountRecords() {

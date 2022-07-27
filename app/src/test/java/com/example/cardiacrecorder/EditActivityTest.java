@@ -7,9 +7,9 @@ import org.junit.Test;
 public class EditActivityTest {
 
     /**
-     * create a Mock RecordList with one Record data
+     * Create a Mock RecordList with one Record data.
      * @return
-     * returns a RecordList
+     * returns a RecordList.
      */
     private  RecordList mockRecordList() {
         RecordList recordList = new RecordList();
@@ -18,7 +18,7 @@ public class EditActivityTest {
     }
 
     /**
-     * create a Mock Record
+     * Create a Mock Record
      * @return
      * returns created Mock Record
      */
@@ -29,7 +29,7 @@ public class EditActivityTest {
 
 
     /**
-     * checks if getRecords return a List successfully
+     * Checks if getRecords return a List successfully
      */
     @Test
     public void testGetRecords() {

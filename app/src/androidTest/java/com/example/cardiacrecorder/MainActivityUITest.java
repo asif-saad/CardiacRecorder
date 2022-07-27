@@ -115,24 +115,5 @@ public class MainActivityUITest {
 
     }
 
-    /*@Test
-    public void UnusualSignTest()
-    {
-        onView(withId(R.id.delete_all)).perform(click());
-        onView(withText("Yes")).perform(click());
-        onView(withId(R.id.addButton)).perform(click());
-        onView(withId(R.id.systolic_pressure)).perform(ViewActions.typeText("200"));
-        Espresso.pressBack();
-        onView(withId(R.id.diastolic_pressure)).perform(ViewActions.typeText("70"));
-        Espresso.pressBack();
-        onView(withId(R.id.heart_rate)).perform(ViewActions.typeText("50"));
-        Espresso.pressBack();
-        onView(withId(R.id.comment)).perform(ViewActions.typeText("Dr. Amir tested."));
-        Espresso.pressBack();
-        onView(withId(R.id.add)).perform(click());
-
-        onView(withId(R.drawable.error)).check(matches(isDisplayed()));
-    }*/
-
 
 }

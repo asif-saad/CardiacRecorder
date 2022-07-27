@@ -6,5 +6,12 @@
         android:id="@+id/delete_all"
         android:title="@string/deleteall"
         android:icon="@drawable/delete"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/AboutUs"
+        android:title="@string/deleteall"
+        android:icon="@drawable/aboutus"
         app:showAsAction="always" />
+
 </menu>

@@ -138,8 +138,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
+    /**
+     * This function holds the action list for clicking delete_all button and AboutUs button.
+     * @param item
+     * @return onOptionsItemSelected(item)
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.delete_all)

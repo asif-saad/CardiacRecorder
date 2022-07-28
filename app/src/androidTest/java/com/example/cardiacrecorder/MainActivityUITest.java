@@ -44,6 +44,7 @@ public class MainActivityUITest {
     @Test
     public void AddEditDeleteTest()
     {
+        // adds a new record here
         onView(withId(R.id.addButton)).perform(click());
         onView(withId(R.id.systolic_pressure)).perform(ViewActions.typeText("120"));
         Espresso.pressBack();
@@ -54,11 +55,14 @@ public class MainActivityUITest {
         onView(withId(R.id.comment)).perform(ViewActions.typeText("Dr. Amir tested."));
         Espresso.pressBack();
         onView(withId(R.id.add)).perform(click());
+
+        // checks whether the added data exists or not
         onView(withId(R.id.systolicCard)).check(matches(withText("120")));
         onView(withId(R.id.diastolicCard)).check(matches(withText("70")));
         onView(withId(R.id.heartCard)).check(matches(withText("50")));
         onView(withId(R.id.CommentMyRow)).check(matches(withText("Dr. Amir tested.")));
 
+        // clicking a list item nad editing it
         onView(withId(R.id.lin_lay)).perform(click());
         onView(withId(R.id.DiastolicPressureEdit)).perform(ViewActions.clearText());
         onView(withId(R.id.DiastolicPressureEdit)).perform(ViewActions.typeText("60"));
@@ -66,6 +70,8 @@ public class MainActivityUITest {
         onView(withId(R.id.SaveEdit)).perform(click());
         onView(withId(R.id.diastolicCard)).check(matches(withText("60")));
 
+
+        // deleting a list item
         onView(withId(R.id.lin_lay)).perform(click());
         onView(withId(R.id.DeleteEdit)).perform(click());
         onView(withText("Yes")).perform(click());
@@ -79,6 +85,7 @@ public class MainActivityUITest {
     @Test
     public void DeleteAllTest()
     {
+        // adds a new record here
         onView(withId(R.id.addButton)).perform(click());
         onView(withId(R.id.systolic_pressure)).perform(ViewActions.typeText("120"));
         Espresso.pressBack();
@@ -90,6 +97,7 @@ public class MainActivityUITest {
         Espresso.pressBack();
         onView(withId(R.id.add)).perform(click());
 
+        // adds another new record here
         onView(withId(R.id.addButton)).perform(click());
         onView(withId(R.id.systolic_pressure)).perform(ViewActions.typeText("110"));
         Espresso.pressBack();
@@ -101,7 +109,7 @@ public class MainActivityUITest {
         Espresso.pressBack();
         onView(withId(R.id.add)).perform(click());
 
-
+        // clicking delete all
         onView(withId(R.id.delete_all)).perform(click());
         onView(withText("Yes")).perform(click());
         onView(withText("120")).check(doesNotExist());

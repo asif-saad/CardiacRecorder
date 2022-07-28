@@ -30,13 +30,15 @@ public class AddActivityTest {
     }
 
     /**
-     * Checks if a record is added successfully on RecordList.
+     * This function checks if a record is added successfully on RecordList.
+     * It adds new record to the record list and does the checking process.
      */
     @Test
     public void testAdd() {
         RecordList recordList = mockRecordList();
         assertEquals(1, recordList.getRecords().size());
 
+        // adding new records
         Record record = new Record(88,78,101,"11-07-2022","14:01 am","no comment");
         recordList.add(record);
 
@@ -45,7 +47,8 @@ public class AddActivityTest {
     }
 
     /**
-     * Checks if add function handle exception successfully.
+     * There might be some exception for some particular cases.
+     * This function checks if add function handles those exceptions successfully.
      */
     @Test
     public void testAddException() {

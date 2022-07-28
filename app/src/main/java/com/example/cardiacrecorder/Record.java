@@ -5,6 +5,15 @@ public class Record implements Comparable<Record>{
     Integer systolic, diastolic, heart;
     String date, time, comment;
 
+    /**
+     *
+     * @param systolic
+     * @param diastolic
+     * @param heart
+     * @param date
+     * @param time
+     * @param comment
+     */
     public Record(Integer systolic, Integer diastolic, Integer heart, String date, String time, String comment) {
         this.systolic = systolic;
         this.diastolic = diastolic;

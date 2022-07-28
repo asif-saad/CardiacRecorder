@@ -31,13 +31,15 @@ public class MainActivityTest {
 
     /**
      * Checks if countRecords function can count records on RecordList successfully.
+     * This function adds some new records and then checks whether they were added to the database.
      */
     @Test
     public void testcountRecords() {
         RecordList recordList = mockRecordList();
 
-        Record record1 = new Record(88,78,101,"11-07-2022","14:01 am","no comment");
-        Record record2 = new Record(92,81,96,"22-06-2022","10:51 am","first comment");
+        // adding several new records
+        Record record1 = new Record(112,68,51,"11-07-2022","14:01 am","no comment");
+        Record record2 = new Record(100,71,57,"22-06-2022","10:51 am","first comment");
         Record record3 = new Record(101,95,78,"18-07-2022","09:04 am",null);
 
         recordList.add(record1);

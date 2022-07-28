@@ -29,7 +29,7 @@ public class EditActivityTest {
 
 
     /**
-     * Checks if getRecords return a List successfully
+     * This function enters an edited record and checks if getRecords return a List successfully.
      */
     @Test
     public void testGetRecords() {

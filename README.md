@@ -1,5 +1,5 @@
 # Health-Bee
-The app Health-Bee is a blood pressure and heart rate management app that utilises the usuage of technology in order to treat patients more professionally and efficiently. The app has been made as user friendly as possible and suitable for all ages.
+The app Health-Bee is a blood pressure and heart rate management app that utilises the usuage of technology in order to treat patients more professionally and efficiently. The app has been made as user friendly as possible and suitable for all ages. It had undergone a strict unit and ui testing phase to eradicate any irregularities.
 The following features are included into the system:-
 
 - Show recorded measurements as list.
